@@ -1,1 +1,23 @@
-<p>receive-from-inspection works!</p>
+<div class="container mt-4">
+  <h2>Receive Items from Inspection</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Item Name</th>
+        <th>Quantity</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of inspectedItems">
+        <td>{{ item.itemName }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm" (click)="confirmReceipt(item.id)">
+            Confirm Receipt
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

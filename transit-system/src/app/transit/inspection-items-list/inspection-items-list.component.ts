@@ -1,12 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ItemService } from '../../services/item.service';
 
 @Component({
   selector: 'app-inspection-items-list',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './inspection-items-list.component.html',
-  styleUrl: './inspection-items-list.component.css'
+  styleUrls: ['./inspection-items-list.component.css']
 })
-export class InspectionItemsListComponent {
+export class InspectionItemsListComponent implements OnInit {
+  inspectionItems: any[] = [];
 
+  constructor(private itemService: ItemService) {}
+
+  ngOnInit(): void {
+    this.loadInspectionItems();
+  }
+
+  loadInspectionItems(): void {
+    this.itemService.getInspectionItems().subscribe({
+      next: (data) => {
+        this.inspectionItems = data;
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
+  }
 }
+

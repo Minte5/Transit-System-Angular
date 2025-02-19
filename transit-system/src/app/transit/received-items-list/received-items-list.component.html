@@ -1,1 +1,27 @@
-<p>received-items-list works!</p>
+<div class="container mt-4">
+  <h2>Received Items from Suppliers</h2>
+  <table class="table table-striped table-bordered mt-3">
+    <thead>
+      <tr>
+        <th>Item Name</th>
+        <th>Supplier</th>
+        <th>Quantity</th>
+        <th>Date Received</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of receivedItems">
+        <td>{{ item.itemName }}</td>
+        <td>{{ item.supplier }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.dateReceived | date: 'short' }}</td>
+        <td>
+          <button class="btn btn-warning btn-sm" (click)="sendForInspection(item.id)">
+            Send for Inspection
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

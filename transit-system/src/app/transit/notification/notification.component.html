@@ -1,1 +1,13 @@
-<p>notification works!</p>
+<div class="notification-container" (click)="openNotifications()">
+  <span *ngIf="showNotification" class="notification-icon">🔴</span>
+</div>
+
+<div *ngIf="newInspectedItems.length > 0" class="notification-list">
+  <h5>New Inspected Items</h5>
+  <ul>
+    <li *ngFor="let item of newInspectedItems">
+      {{ item.itemName }} - {{ item.quantity }}
+      <button (click)="receiveItem(item.id)" class="btn btn-success btn-sm">Receive</button>
+    </li>
+  </ul>
+</div>

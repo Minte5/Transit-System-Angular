@@ -1,1 +1,30 @@
-<p>send-to-store works!</p>
+<div class="container mt-4">
+  <h2>Send Items to Store</h2>
+  <div class="mb-3">
+    <label for="storeSelect" class="form-label">Select Store</label>
+    <select id="storeSelect" class="form-control" [(ngModel)]="selectedStore">
+      <option *ngFor="let store of stores" [value]="store">{{ store }}</option>
+    </select>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Item Name</th>
+        <th>Quantity</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of receivedItems">
+        <td>{{ item.itemName }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>
+          <button class="btn btn-success btn-sm" (click)="sendToStore(item.id)">
+            Send to Store
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -26,6 +26,14 @@ export class ItemService {
     return this.http.get<any[]>(`${this.apiUrl}/inspection`);
   }
 
+  getNewInspectedItems(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/new-inspected`);
+  }
+
+  confirmReceipt(itemId: number): Observable<any> {
+    return this.http.post(`${this.apiUrl}/confirm-receipt`, { itemId });
+  }
+
   receiveFromInspection(itemId: number): Observable<any> {
     return this.http.put(`${this.apiUrl}/receive-from-inspection/${itemId}`, {});
   }
